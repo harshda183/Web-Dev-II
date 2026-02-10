@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practise Selectors</title>
+  </head>
+  <body>
+    <h1>First H1</h1>
+    <h1>Second H1</h1>
+
+    <h3>First H3</h3>
+    <h3>Second H3</h3>
+
+    <h5>First H5</h5>
+    <h5>Second H5</h5>
+    <h5>Third H5</h5>
+
+    <div class="green">First DIV</div>
+    <div class="red">Second DIV</div>
+    <div class="blue">Third DIV</div>
+
+    <p class="green">First P</p>
+    <p class="red">Second P</p>
+    <p class="blue">Third P</p>
+
+    <hr />
+
+    <button onclick="changeH1()">Change H1</button>
+    <button onclick="changeH3()">Change H3</button>
+    <button onclick="changeH5()">Change H5</button>
+    <button onclick="changeGreen()">Change Green</button>
+    <button onclick="changeRed()">Change Red</button>
+    <button onclick="changeBlue()">Change Blue</button>
+
+    <script>
+      function changeH1() {
+        // the colour of first <h1> should turn to red
+        let h1Elements = document.querySelectorAll("h1");
+        h1Elements.forEach(function(h1) {
+          h1.style.color = "red";
+        });
+      }
+
+      function changeH3() {
+        // the colour of all <h3> should turn to green
+        const h3Elements = document.querySelectorAll("h3");
+        h3Elements.forEach(function(h3) {
+          h3.style.color = "green";
+        });
+      }
+
+      function changeH5() {
+        // the colour of all <h5> should turn to blue
+        const h5Elements = document.querySelectorAll("h5");
+        h5Elements.forEach(function(h5) {
+          h5.style.color = "blue";
+        });
+      }
+
+      function changeGreen() {
+        // all the elements with the class green should change to green
+        const greenElements = document.querySelectorAll(".green");
+        greenElements.forEach(function(el) {
+          el.style.color = "green";
+        });
+      }
+
+      function changeRed() {
+        // all the elements with the class red should change to red
+        const redElements = document.querySelectorAll(".red");
+        redElements.forEach(function(el) {
+          el.style.color = "red";
+        });
+      }
+
+      function changeBlue() {
+        // all the elements with the class blue should change to blue
+        const blueElements = document.querySelectorAll(".blue");
+        blueElements.forEach(function(el) {
+          el.style.color = "blue";
+        });
+      }
+    </script>
+  </body>
+</html>
