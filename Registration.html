@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+</head>
+<body>
+
+	<input type="text" name="name" id="name" placeholder="Enter Name">
+	
+	<select id="gender">
+		<option value="">--</option>
+		<option value="Male">M</option>
+		<option value="Female">F</option>
+	</select>
+	
+	<input type="text" name="email" id="email" placeholder="Enter Email">
+	<input type="text" name="mobile" id="mobile" placeholder="Enter Mobile">
+	
+	<hr>
+	
+	<h1 id="dName"></h1>
+	<h2 id="dGender"></h2>
+	<h3 id="dEmail"></h3>
+	<h4 id="dMobile"></h4>
+	
+	<hr>
+	
+	<button onclick="showName()">NAME</button>
+	<button onclick="showGender()">GENDER</button>
+	<button onclick="showEmail()">EMAIL</button>
+	<button onclick="showMobile()">MOBILE</button>
+	<button onclick="resetForm()">RESET FORM</button>
+	<button onclick="resetDisplay()">RESET DISPLAY</button>
+
+	<script type="text/javascript">
+		function showName() {
+			document.getElementById("dName").innerText =
+				document.getElementById("name").value;
+		}
+
+		function showGender() {
+			document.getElementById("dGender").innerText =
+				document.getElementById("gender").value;
+		}
+
+		function showEmail() {
+			document.getElementById("dEmail").innerText =
+				document.getElementById("email").value;
+		}
+
+		function showMobile() {
+			document.getElementById("dMobile").innerText =
+				document.getElementById("mobile").value;
+		}
+
+		function resetForm() {
+			document.getElementById("name").value = "";
+			document.getElementById("gender").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("mobile").value = "";
+		}
+
+		function resetDisplay() {
+			document.getElementById("dName").innerText = "";
+			document.getElementById("dGender").innerText = "";
+			document.getElementById("dEmail").innerText = "";
+			document.getElementById("dMobile").innerText = "";
+		}
+	</script>
+
+</body>
+</html>
