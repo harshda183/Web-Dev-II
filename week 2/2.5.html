@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of selector</title>
+</head>
+
+<body>
+    <div class="ipl">
+        <h1>hardik</h1>
+        <h2>rohit</h2>
+        <div class="csk">dhoni</div>
+        <p id="rcb">virat</p>
+        <p id="rcb">raina</p>
+        <div>chintu</div>
+        <h2 class="csk">mintu</h2>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // 1. getElementById -> return 1st match result
+
+    const idEl = document.getElementById("rcb");
+
+    console.log(idEl);
+
+
+    // 2. getElementsByClassName -> return all match result
+
+    const idClass = document.getElementsByClassName("csk");
+
+    console.log(idClass);
+    idClass[0].style.color = "yellow"
+
+    // 3. getElementsByTagName -> return all match result
+
+    const idTag = document.getElementsByTagName("h2");
+
+    // console.log(idTag[0]);
+    idTag[0].style.color = "blue"
+
+    // 4. querySelector
+
+    const queryEl = document.querySelector("h1+h2");
+    console.log(queryEl);
+
+    // 5. querySelectorAll
+
+    const queryAllEl = document.querySelectorAll(".ipl> h2");
+    console.log(queryAllEl);
+
+
+// idClass.forEach((el)=>{
+//     console.log(el);
+    
+// })
+
+queryAllEl.forEach((el)=>{
+    console.log(el);
+    
+})
+</script>
