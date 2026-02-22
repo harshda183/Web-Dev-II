@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Event Dashboard</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #8fb9ff, #7de2d1);
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+  max-width: 1200px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #3b4cca;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(to right, #4e73df, #8e44ad);
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.event-card {
+  background: linear-gradient(135deg, #f0f4ff, #e6f0ff);
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.event-card h3 {
+  margin-bottom: 5px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #6c5ce7;
+  color: white;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 28px;
+  height: 28px;
+
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+
+  display: flex;              /* perfect centering */
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;                 /* remove default padding */
+}
+
+.dom-demo {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.demo-box {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.wrapper {
+  max-width: 1200px;
+  width: 95%;
+  margin: auto;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎯 Smart Event Dashboard</h1>
+<div class="wrapper">
+
+<div class="container">
+  <!-- Add Event -->
+  <div class="card">
+    <h2>Add New Event</h2>
+    <input type="text" id="title" placeholder="Event Title">
+    <input type="date" id="date">
+    <select id="category">
+      <option>Conference</option>
+      <option>Workshop</option>
+      <option>Meetup</option>
+      <option>Festival</option>
+    </select>
+    <textarea id="description" placeholder="Description"></textarea>
+    <button onclick="addEvent()">Add Event</button>
+  </div>
+
+  <!-- Events List -->
+  <div class="card">
+    <h2>My Events</h2>
+    <div class="button-group">
+      <button onclick="clearEvents()">Clear All Events</button>
+      <button onclick="addSampleEvent()">Add Sample Event</button>
+    </div>
+    <div class="events-container" id="eventsContainer">
+      <p id="emptyMessage">No events yet. Add your first event!</p>
+    </div>
+  </div>
+</div>
+
+<!-- DOM Manipulation Demo -->
+<div class="dom-demo">
+  <h2>DOM Manipulation Demo</h2>
+  <div class="demo-box" id="demoBox"></div>
+  <p id="keyOutput" style="color: blue; margin-top:10px;"></p>
+</div>
+
+<script>
+const eventsContainer = document.getElementById("eventsContainer");
+const emptyMessage = document.getElementById("emptyMessage");
+
+function addEvent() {
+  const title = document.getElementById("title").value;
+  const date = document.getElementById("date").value;
+  const category = document.getElementById("category").value;
+  const description = document.getElementById("description").value;
+
+  if (!title || !date) {
+    alert("Please enter title and date");
+    return;
+  }
+
+  emptyMessage.style.display = "none";
+
+  const eventCard = document.createElement("div");
+  eventCard.className = "event-card";
+
+  eventCard.innerHTML = `
+    <button class="delete-btn" onclick="this.parentElement.remove()">×</button>
+    <h3>${title}</h3>
+    <p>📅 ${date}</p>
+    <span class="badge">${category}</span>
+    <p>${description}</p>
+  `;
+
+  eventsContainer.appendChild(eventCard);
+
+  document.getElementById("title").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("description").value = "";
+}
+
+function clearEvents() {
+  eventsContainer.innerHTML = "";
+  eventsContainer.appendChild(emptyMessage);
+  emptyMessage.style.display = "block";
+}
+
+function addSampleEvent() {
+  document.getElementById("title").value = "Emifest";
+  document.getElementById("date").value = "2025-01-14";
+  document.getElementById("category").value = "Meetup";
+  document.getElementById("description").value = "Lorem ipsum";
+  addEvent();
+}
+
+// DOM Demo
+const demoBox = document.getElementById("demoBox");
+
+
+
+document.addEventListener("keydown", function(e) {
+  document.getElementById("keyOutput").innerText = "You pressed: " + e.key;
+});
+</script>
+</div>
+
+</body>
+</html>
