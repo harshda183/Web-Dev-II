@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <p>Topic - Promises in JavaScript</p>
+
+    
+</body>
+<script>
+    //A promise is an object that may produce a single value some time in the future either a resolved value or a reason that its not resolved.
+    // a promise can have on these three states of a promise are pending, fulfilled and rejected.
+    const promise = new Promise((resolve, reject) => {
+        return reject("hello world")
+    });
+    console.log(promise, typeof promise);
+
+    // step - 2 read values from promise
+    promise
+      .then((res) => console.log(res))
+      .catch((rej) => console.log(rej))
+
+        
+</script>
+</html>
