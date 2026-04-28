@@ -4,7 +4,7 @@ const consoleBox = document.getElementById("consoleLog");
 
 /* ==============================
    Console Logger (Event Loop)
-============================== */
+=============================== */
 
 function log(message) {
   console.log(message);
