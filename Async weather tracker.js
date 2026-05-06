@@ -2,7 +2,7 @@ const API_KEY = "e540dae719f4ae9fca722f2f56191e13";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const consoleBox = document.getElementById("consoleLog");
 
-/* ==============================
+/* ===============================
    Console Logger (Event Loop)
 =============================== */
 
